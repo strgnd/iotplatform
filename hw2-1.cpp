@@ -2,6 +2,7 @@
 #include <wiringPi.h>
 #include <unistd.h>
 using namespace std;
+#define DEBOUNCE_TIME 200
 
 #define LED_GPIO1      13      // this is GPIO17, Pin 11
 #define LED_GPIO2      18
@@ -12,36 +13,54 @@ using namespace std;
 
 // the Interrupt Service Routine (ISR) to light the LED
 void lightLED1(void) {
-    static int x = 1;
-    if (x / 2 != 0) {
-        digitalWrite(LED_GPIO1, HIGH);         // turn the LED on
-        cout << "led1 " << x++ << endl;
+    static unsigned long lastISRTime = 0;
+    unsigned long currentISRTime = millis();
+    static int x1 = 1;
+    if(currentISRTime – lastISRTime > DEBOUNCE_TIME) {
+         if (x1 / 2 != 0) {
+            digitalWrite(LED_GPIO1, HIGH);         // turn the LED on
+            cout << "led1 on " << x1++ << endl;
+        }
+        else {
+            digitalWrite(LED_GPIO1, LOW);
+            cout << "led1 off" << x1++ <<endl;
+        }
     }
-    else {
-        digitalWrite(LED_GPIO1, LOW);
-    }
+    lastISRTime = currentISRTime;
 }
 
 void lightLED2(void) {
-    static int x = 1;
-    if (x / 2 != 0) {
-        digitalWrite(LED_GPIO2, HIGH);         // turn the LED on
-        cout << "led2 " << x++ << endl;
+    static unsigned long lastISRTime = 0;
+    unsigned long currentISRTime = millis();
+    static int x2 = 1;
+    if(currentISRTime – lastISRTime > DEBOUNCE_TIME) {
+         if (x2 / 2 != 0) {
+            digitalWrite(LED_GPIO1, HIGH);         // turn the LED on
+            cout << "led1 on " << x2++ << endl;
+        }
+        else {
+            digitalWrite(LED_GPIO1, LOW);
+            cout << "led1 off" << x2++ <<endl;
+        }
     }
-    else {
-        digitalWrite(LED_GPIO2, LOW);
-    }
+    lastISRTime = currentISRTime;
 }
 
 void lightLED3(void) {
-    static int x = 1;
-    if (x / 2 != 0) {
-        digitalWrite(LED_GPIO3, HIGH);         // turn the LED on
-        cout << "led3 " << x++ << endl;
+    static unsigned long lastISRTime = 0;
+    unsigned long currentISRTime = millis();
+    static int x3 = 1;
+    if(currentISRTime – lastISRTime > DEBOUNCE_TIME) {
+         if (x3 / 2 != 0) {
+            digitalWrite(LED_GPIO1, HIGH);         // turn the LED on
+            cout << "led1 on " << x3++ << endl;
+        }
+        else {
+            digitalWrite(LED_GPIO1, LOW);
+            cout << "led1 off" << x3++ <<endl;
+        }
     }
-    else {
-        digitalWrite(LED_GPIO3, LOW);
-    }
+    lastISRTime = currentISRTime;
 }
 
 int main() {                             // must be run as root
