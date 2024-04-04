@@ -15,6 +15,7 @@ void lightLED1(void) {
     static int x = 1;
     if (x / 2 != 0) {
         digitalWrite(LED_GPIO1, HIGH);         // turn the LED on
+        cout << "led1 " << x++ << endl;
     }
     else {
         digitalWrite(LED_GPIO1, LOW);
@@ -25,6 +26,7 @@ void lightLED2(void) {
     static int x = 1;
     if (x / 2 != 0) {
         digitalWrite(LED_GPIO2, HIGH);         // turn the LED on
+        cout << "led2 " << x++ << endl;
     }
     else {
         digitalWrite(LED_GPIO2, LOW);
@@ -35,6 +37,7 @@ void lightLED3(void) {
     static int x = 1;
     if (x / 2 != 0) {
         digitalWrite(LED_GPIO3, HIGH);         // turn the LED on
+        cout << "led3 " << x++ << endl;
     }
     else {
         digitalWrite(LED_GPIO3, LOW);
@@ -60,6 +63,8 @@ int main() {                             // must be run as root
     wiringPiISR(BUTTON_GPIO1, INT_EDGE_RISING, &lightLED1);
     wiringPiISR(BUTTON_GPIO2, INT_EDGE_RISING, &lightLED2);
     wiringPiISR(BUTTON_GPIO3, INT_EDGE_RISING, &lightLED3);
+
+    for(;;) { }
 
     return 0;                             // program ends after 10s
 }
