@@ -12,24 +12,24 @@ int main() {                             // must be run as root
     pinMode(PWM_LED1, PWM_OUTPUT);         // the PWM LED - PWM0
     pinMode(PWM_LED2, PWM_OUTPUT);
     
-    pwmSetRange(2000);
+    pwmSetRange(2040);
 
     while (running) {
-        for (int i = 1; i < 2000; i++) {       // Fade fully on
+        for (int i = 1; i < 2040; i++) {       // Fade fully on
             pwmWrite(PWM_LED1, i);
-            usleep(1000);
+            usleep(2040);
         }
-        for (int i = 1999; i >= 0; i--) {       // Fade fully off
+        for (int i = 2039; i >= 0; i--) {       // Fade fully off
             pwmWrite(PWM_LED1, i);
-            usleep(1000);
+            usleep(2040);
         }
-        for (int i = 1; i < 2000; i++) {       // Fade fully on
+        for (int i = 1; i < 2040; i++) {       // Fade fully on
             pwmWrite(PWM_LED2, i);
-            usleep(1000);
+            usleep(2040);
         }
-        for (int i = 1999; i >= 0; i--) {       // Fade fully off
+        for (int i = 2039; i >= 0; i--) {       // Fade fully off
             pwmWrite(PWM_LED2, i);
-            usleep(1000);
+            usleep(2040);
         }
     }
 
