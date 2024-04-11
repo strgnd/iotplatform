@@ -13,6 +13,18 @@ int main(int argc, char* argv[]) {
 	wiringPiSetupGpio(); unsigned int T, L;
 	pinMode(PIN_TRIG, OUTPUT); pinMode(PIN_ECHO, INPUT);
 
+	pinMode(LED_GPIO1, OUTPUT);            // the LED
+    	pinMode(BUTTON_GPIO1, INPUT);          // the Button
+    	digitalWrite(LED_GPIO1, LOW);         // LED is off
+
+    	pinMode(LED_GPIO2, OUTPUT);            // the LED
+    	pinMode(BUTTON_GPIO2, INPUT);          // the Button
+    	digitalWrite(LED_GPIO2, LOW);
+
+    	pinMode(LED_GPIO3, OUTPUT);            // the LED
+    	pinMode(BUTTON_GPIO3, INPUT);          // the Button
+    	digitalWrite(LED_GPIO3, LOW);
+
 	while (1) {
 		digitalWrite(PIN_TRIG, LOW); delayMicroseconds(2);
 		digitalWrite(PIN_TRIG, HIGH); delayMicroseconds(20);
