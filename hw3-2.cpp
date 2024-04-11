@@ -25,6 +25,18 @@ TRYAGAIN:                        // If checksum fails (come back here)
     digitalWrite(DHT_GPIO, HIGH);              // set the line high
     pinMode(DHT_GPIO, INPUT);                  // now gpio is an input
 
+    pinMode(LED_GPIO1, OUTPUT);            // the LED
+    pinMode(BUTTON_GPIO1, INPUT);          // the Button
+    digitalWrite(LED_GPIO1, LOW);         // LED is off
+
+    pinMode(LED_GPIO2, OUTPUT);            // the LED
+    pinMode(BUTTON_GPIO2, INPUT);          // the Button
+    digitalWrite(LED_GPIO2, LOW);
+
+    pinMode(LED_GPIO3, OUTPUT);            // the LED
+    pinMode(BUTTON_GPIO3, INPUT);          // the Button
+    digitalWrite(LED_GPIO3, LOW);
+
     while (1) {
         // need to ignore the first and second high after going low
         do { delayMicroseconds(1); } while (digitalRead(DHT_GPIO) == HIGH);
